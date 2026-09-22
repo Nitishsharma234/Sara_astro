@@ -21,14 +21,14 @@ jobs:
         run: python -m pip install build
 
       - name: Build package
-        working-directory: sara-astro
+        working-directory: sara-astro/sara-astro
         run: python -m build
 
       - name: Upload distributions
         uses: actions/upload-artifact@v5
         with:
           name: python-package-distributions
-          path: sara-astro/dist/
+          path: sara-astro/sara-astro/dist/
 
   publish:
     name: Publish to TestPyPI
