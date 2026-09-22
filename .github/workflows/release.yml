@@ -5,30 +5,30 @@ on:
 
 jobs:
   build:
-      name: Build package
-      runs-on: ubuntu-latest
-    
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v6
-    
-        - name: Setup Python
-          uses: actions/setup-python@v6
-          with:
-            python-version: "3.x"
-    
-        - name: Install build
-          run: python -m pip install build
-    
-        - name: Build package
-          working-directory: sara-astro
-          run: python -m build
-    
-        - name: Upload distributions
-          uses: actions/upload-artifact@v5
-          with:
-            name: python-package-distributions
-            path: sara-astro/dist/
+    name: Build package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Install build
+        run: python -m pip install build
+
+      - name: Build package
+        working-directory: sara-astro
+        run: python -m build
+
+      - name: Upload distributions
+        uses: actions/upload-artifact@v5
+        with:
+          name: python-package-distributions
+          path: sara-astro/dist/
 
   publish:
     name: Publish to TestPyPI
